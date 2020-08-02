@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.onechat.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,10 +16,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        var chatItems = ArrayList<ChatItem>
+        var chatItems = ArrayList<ChatItem>()
         for(idx in 1 .. 100){
             var chatItem = ChatItem("메시지 입니다. $idx")
-            chatItem.add(chatItem)
+            chatItems.add(chatItem)
         }
+
+        var adapter = MainChatAdapter(chatItems)
+        var linearLayoutManager = LinearLayoutManager(this)
+        binding.rvChat.layoutManager = linearLayoutManager
+        binding.rvChat.adapter = adapter
+
     }
 }
