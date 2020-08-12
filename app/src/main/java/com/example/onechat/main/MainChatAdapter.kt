@@ -1,10 +1,12 @@
-package com.example.onechat
+package com.example.onechat.main
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.onechat.R
 import com.example.onechat.databinding.ItemChattingBinding
 
 class MainChatAdapter(var chatItems: ArrayList<ChatItem>): RecyclerView.Adapter<MainChatAdapter.ChatViewHolder>() {
@@ -25,5 +27,11 @@ class MainChatAdapter(var chatItems: ArrayList<ChatItem>): RecyclerView.Adapter<
 
     class ChatViewHolder(view: View): RecyclerView.ViewHolder(view){
         var binding = DataBindingUtil.bind<ItemChattingBinding>(view)
+
+        init{
+            binding!!.root.setOnClickListener{
+                Toast.makeText(view.context, "$adapterPosition", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

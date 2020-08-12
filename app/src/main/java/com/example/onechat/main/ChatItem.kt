@@ -1,4 +1,4 @@
-package com.example.onechat
+package com.example.onechat.main
 /**
  * 채팅 메시지 데이터 클래스
  * */
